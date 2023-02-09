@@ -15,15 +15,14 @@ html,body{
 	width: 100%;
 	font-size: 100%;
 	line-height: 1;
-	font-family: $fontFamily;
+	font-family: var(--fontFamily);
 }
-input,button,textarea{font-family: $fontFamily}
+input,button,textarea{font-family: var(--fontFamily)}
 input::-ms-clear{display: none;}
 button{
 	cursor: pointer;
 	background-color: transparent;
 }
-button::-moz-focus-inner {padding:0;border:0;}
 a, a:visited{text-decoration: none;}
 a:hover{text-decoration: none;}
 ul li{list-style: none;}

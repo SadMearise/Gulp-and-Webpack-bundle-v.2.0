@@ -21,22 +21,22 @@
 // 	@if $type==1 {
 // 		// Только если меньше контейнера
 // 		#{$property}: $startSize + px;
-// 		@media (max-width: #{$containerWidth + px}) {
-// 			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$containerWidth - 320}));
+// 		@media (max-width: #{var(--containerWidth) + px}) {
+// 			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{var(--containerWidth) - 320}));
 // 		}
 // 	} @else if $type==2 {
 // 		// Только если больше контейнера
 // 		#{$property}: $startSize + px;
-// 		@media (min-width: #{$containerWidth + px}) {
-// 			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+// 		@media (min-width: #{var(--containerWidth) + px}) {
+// 			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{var(--maxWidth) - 320}));
 // 		}
 // 	} @else {
 // 		// Всегда
-// 		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+// 		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{var(--maxWidth) - 320}));
 // 	}
 // }
 
-@mixin adaptive-value($property, $maxSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) { 
+@mixin adaptive-value($property, $maxSize, $minSize, $widthFrom: var(--containerWidth), $widthTo: var(--minWidth), $keepSize: 0) { 
 	$addSize: $maxSize - $minSize; 
 	@if $keepSize == 1 {
 		// В промежутке
@@ -55,9 +55,9 @@
 	} @else if $keepSize == 3 { 
 		// Только если больше контейнера
 		@media (min-width: #{$widthFrom + px}) { 
-			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$widthTo + px}) / #{$maxWidth - $widthTo})); 
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$widthTo + px}) / #{var(--maxWidth) - $widthTo})); 
 		} 
 	} @else { 
-		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$widthTo + px}) / #{$maxWidth - $widthTo})); 
+		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$widthTo + px}) / #{var(--maxWidth) - $widthTo})); 
 	} 
 }

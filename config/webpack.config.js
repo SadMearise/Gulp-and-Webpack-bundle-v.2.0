@@ -77,6 +77,7 @@ module.exports = {
 	entry: {
 		// app: ["@babel/polyfill", `${paths.src}/js/app.js`],
 		home: `${paths.src}/js/home.js`,
+		style: `${paths.src}/scss/style.scss`,
 		header: `${paths.src}/scss/header.scss`,
 		footer: `${paths.src}/scss/footer.scss`,
 	},
