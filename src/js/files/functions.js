@@ -14,11 +14,16 @@ export function isWebp() {
 
 export function ibg() {
     let ibg = document.querySelectorAll(".ibg");
-    for (let i = 0; i < ibg.length; i++) {
-        if (ibg[i].querySelector('img')) {
-            ibg[i].style.backgroundImage = `url(${ibg[i].querySelector('img').getAttribute('src')})`;
-        }
-    }
+	window.addEventListener("load", function(event) {
+		let checkWebp = document.documentElement.classList.contains('webp');
+		for (let i = 0; i < ibg.length; i++) {
+			if (checkWebp) {
+				if (ibg[i].querySelector('source')) ibg[i].style.backgroundImage = `url(${ibg[i].querySelector('source').getAttribute('srcset')})`;
+			} else {
+				if (ibg[i].querySelector('img')) ibg[i].style.backgroundImage = `url(${ibg[i].querySelector('img').getAttribute('src')})`;
+			}
+		}
+	});
 }
 
 export function toggleClassActive() {
