@@ -1,33 +1,45 @@
+@use "sass:math";
 // Подключаемые шрифты
 // @import "fonts/fonts";
 
 // Функции и переменные
-@import 'base/functions';
 @import 'base/variables';
+@import 'base/functions';
 
 :root {
 	// Шрифт по умолчанию
-	--fontFamily: "raleway_f", sans-serif;
-	// font-weight
+	--fontFamily: "";
+
+	// font-weight. prefix: --fw-
 	--fw-200: 200;
 	--fw-300: 300;
 	--fw-400: 400;
 	--fw-500: 500;
 	--fw-600: 600;
 	--fw-700: 700;
-	// colors
-	--color-yellow: #e7e7e0;
 
-	// общие
-	--minWidth: 375;
-	--maxWidth: 1440;
-	--containerWidth: 1176; // Вписываем ширину контейнера как она есть
-	--containerPadding: 40;
-	--containerSidePadding: calc(var(--containerPadding) / 2);
+	// colors. prefix: --color-
 
-	// вспомогательные
-	--index: calc(1vh + 1vw); // Адаптивное свойство. Использование: font-size: calc(var(--index) * 2.5);
+	// line-height. prefix: --lh-
+	
+	// letter-spacing. prefix: --ls-
+
+	// font-size. prefix: --fs-
 }
+
+$containerWidth: 1176; // Вписываем ширину контейнера как она есть
+
+$containerPaddingDefault: 40;
+$containerSidePaddingDefault: math.div($containerPaddingDefault, 2);
+
+$containerPaddingL: 30;
+$containerSidePaddingXS: math.div($containerPaddingL, 2);
+
+$containerPaddingM: 20;
+$containerSidePaddingM: math.div($containerPaddingM, 2);
+
+$containerPaddingS: 10;
+$containerSidePaddingS: math.div($containerPaddingS, 2);
 
 
 // Обнуление, общие параметры
@@ -35,11 +47,26 @@
 // @import 'base/mixins';
 
 // Оболочка
+html {
+	font-size: $defaultFS + px;
+}
+// Если требуется полностью резиновая вёрстка на любых типах экранов. Все основные значения в rem
+// Для однопиксельных значений: max(1px, 1rem)
+// html {
+// 	font-size: math.div(100vw, 1440) * 10; 
+// 	@media (max-width: em($breakpoint992)) {
+// 		font-size: math.div(100vw, $breakpoint768) * 10; 
+// 	}
+// 	@media (max-width: em($breakpoint768)) {
+// 		font-size: math.div(100vw, $breakpoint576) * 10; 
+// 	}
+// 	@media (max-width: em($breakpoint576)) {
+// 		font-size: math.div(100vw, $breakpoint360) * 10; 
+// 	}
+// }
+
 body {
-	color: #e7e7e0;
-	background-color: #010101;
-	line-height: 1.55;
-	font-size: calc(var(--containerSidePadding) * 1px);
+	font-size: rem(16);
 	&.lock {
 		overflow: hidden;
 	}
@@ -55,10 +82,10 @@ body {
 
 // Основная сетка
 .container {
-	max-width: calc((var(--containerWidth) + var(--containerPadding)) * 1px);
+	max-width: ($containerWidth + $containerPaddingDefault) + px;
 	width: 100%;
 	margin: 0 auto;
-	padding: 0 calc(var(--containerSidePadding) * 1px);
+	padding: 0 ($containerSidePaddingDefault + px);
 
 	@media (max-width: em($breakpoint1400)) {
 		max-width: rem(1100);
@@ -75,23 +102,23 @@ body {
 }
 
 .vertical-indent {
-	&--xs {
+	&_xs {
 		padding-top: 0px;
 		padding-bottom: 0px;
 	}
-	&--s {
+	&_s {
 		padding-top: 0px;
 		padding-bottom: 0px;
 	}
-	&--m {
+	&_m {
 		padding-top: 0px;
 		padding-bottom: 0px;
 	}
-	&--l {
+	&_l {
 		padding-top: 0px;
 		padding-bottom: 0px;
 	}
-	&--xl {
+	&_xl {
 		padding-top: 0px;
 		padding-bottom: 0px;
 
@@ -108,11 +135,11 @@ body {
 }
 
 // классы для вставки 
-// vertical-indent vertical-indent--xs
-// vertical-indent vertical-indent--s
-// vertical-indent vertical-indent--m
-// vertical-indent vertical-indent--l
-// vertical-indent vertical-indent--xl
+// vertical-indent vertical-indent_xs
+// vertical-indent vertical-indent_s
+// vertical-indent vertical-indent_m
+// vertical-indent vertical-indent_l
+// vertical-indent vertical-indent_xl
 
 // Подключение файлов с общими классами
 @import "base/ui";

@@ -1,14 +1,17 @@
+@use "sass:math";
+@import 'variables';
+
 @function prc($pxOne, $pxTwo) {
-	$result: calc($pxOne / $pxTwo) * 100%;
+	$result: math.div($pxOne, $pxTwo) * 100%;
 	@return $result;
 }
 
 @function rem($px) {
-	$result: calc($px / 16) + rem;
+	$result: math.div($px, $defaultFS) + rem;
 	@return $result;
 }
 
 @function em($px) {
-	$result: calc($px / 16) + em;
+	$result: math.div($px, 16) + em;
 	@return $result;
 }

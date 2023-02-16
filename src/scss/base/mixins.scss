@@ -1,12 +1,3 @@
-@mixin flexbox() {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	font-size: 0;
-}
-
 @mixin anim($time, $delay) {
 	transition: all $time ease $delay;
 	-webkit-transition: all $time ease $delay;
@@ -15,45 +6,21 @@
 	-o-transition: all $time ease $delay;
 }
 
-// дописать
-// @mixin adaptive-value($property, $startSize, $minSize, $type) {
-// 	$addSize: $startSize - $minSize;
-// 	@if $type==1 {
-// 		// Только если меньше контейнера
-// 		#{$property}: $startSize + px;
-// 		@media (max-width: #{var(--containerWidth) + px}) {
-// 			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{var(--containerWidth) - 320}));
-// 		}
-// 	} @else if $type==2 {
-// 		// Только если больше контейнера
-// 		#{$property}: $startSize + px;
-// 		@media (min-width: #{var(--containerWidth) + px}) {
-// 			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{var(--maxWidth) - 320}));
-// 		}
-// 	} @else {
-// 		// Всегда
-// 		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{var(--maxWidth) - 320}));
-// 	}
-// }
-
 @mixin adaptive-value($property, $maxSize, $minSize, $widthFrom: var(--containerWidth), $widthTo: var(--minWidth), $keepSize: 0) { 
 	$addSize: $maxSize - $minSize; 
-	@if $keepSize == 1 {
-		// В промежутке
+	@if $keepSize == 1 { // в промежутке
 		@media (max-width: #{$widthFrom + px}) and (min-width: #{$widthTo + px}) { 
 			#{$property}: calc( 
 					#{$minSize + px} + #{$addSize} * ((100vw - #{$widthTo + px}) / #{$widthFrom - $widthTo}) 
 			); 
 		} 
-	} @else if $keepSize == 2 { 
-		// Только если меньше контейнера
+	} @else if $keepSize == 2 { // все что меньше $widthFrom
 		@media (max-width: #{$widthFrom + px}) { 
 			#{$property}: calc( 
 					#{$minSize + px} + #{$addSize} * ((100vw - #{$widthTo + px}) / #{$widthFrom - $widthTo}) 
 			); 
 		} 
-	} @else if $keepSize == 3 { 
-		// Только если больше контейнера
+	} @else if $keepSize == 3 { // все что больше $widthFrom
 		@media (min-width: #{$widthFrom + px}) { 
 			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$widthTo + px}) / #{var(--maxWidth) - $widthTo})); 
 		} 
