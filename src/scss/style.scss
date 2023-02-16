@@ -24,9 +24,8 @@
 	
 	// letter-spacing. prefix: --ls-
 
-	// font-size. prefix: --fs-
+	// font-size. prefix: --fz-
 }
-
 $containerWidth: 1176; // Вписываем ширину контейнера как она есть
 
 $containerPaddingDefault: 40;
@@ -48,7 +47,7 @@ $containerSidePaddingS: math.div($containerPaddingS, 2);
 
 // Оболочка
 html {
-	font-size: $defaultFS + px;
+	font-size: $defaultFZ + px;
 }
 // Если требуется полностью резиновая вёрстка на любых типах экранов. Все основные значения в rem
 // Для однопиксельных значений: max(1px, 1rem)

@@ -7,7 +7,7 @@
 }
 
 @function rem($px) {
-	$result: math.div($px, $defaultFS) + rem;
+	$result: math.div($px, $defaultFZ) + rem;
 	@return $result;
 }
 
