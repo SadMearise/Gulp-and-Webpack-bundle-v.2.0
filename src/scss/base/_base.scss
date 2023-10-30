@@ -1,53 +1,5 @@
-@use "sass:math";
-// Подключаемые шрифты
-// @import "fonts/fonts";
-
-// Функции и переменные
-@import 'base/variables';
-@import 'base/functions';
-
-:root {
-	// Шрифт по умолчанию
-	--fontFamily: "";
-
-	// font-weight. prefix: --fw-
-	--fw-200: 200;
-	--fw-300: 300;
-	--fw-400: 400;
-	--fw-500: 500;
-	--fw-600: 600;
-	--fw-700: 700;
-
-	// colors. prefix: --color-
-
-	// line-height. prefix: --lh-
-	
-	// letter-spacing. prefix: --ls-
-
-	// font-size. prefix: --fz-
-}
-$containerWidth: 1176; // Вписываем ширину контейнера как она есть
-
-$containerPaddingDefault: 40;
-$containerSidePaddingDefault: math.div($containerPaddingDefault, 2);
-
-$containerPaddingL: 30;
-$containerSidePaddingXS: math.div($containerPaddingL, 2);
-
-$containerPaddingM: 20;
-$containerSidePaddingM: math.div($containerPaddingM, 2);
-
-$containerPaddingS: 10;
-$containerSidePaddingS: math.div($containerPaddingS, 2);
-
-
-// Обнуление, общие параметры
-@import 'base/reset';
-// @import 'base/mixins';
-
-// Оболочка
 html {
-	font-size: $defaultFZ + px;
+  font-size: $defaultFZ + px;
 }
 // Если требуется полностью резиновая вёрстка на любых типах экранов. Все основные значения в rem
 // Для однопиксельных значений: max(1px, 1rem)
@@ -65,10 +17,9 @@ html {
 // }
 
 body {
-	font-size: rem(16);
-	&.lock {
-		overflow: hidden;
-	}
+  &.lock {
+    overflow: hidden;
+  }
 }
 
 .wrapper {
@@ -79,7 +30,6 @@ body {
 	flex-direction: column;
 }
 
-// Основная сетка
 .container {
 	max-width: ($containerWidth + $containerPaddingDefault) + px;
 	width: 100%;
@@ -139,6 +89,3 @@ body {
 // vertical-indent vertical-indent_m
 // vertical-indent vertical-indent_l
 // vertical-indent vertical-indent_xl
-
-// Подключение файлов с общими классами
-@import "base/ui";

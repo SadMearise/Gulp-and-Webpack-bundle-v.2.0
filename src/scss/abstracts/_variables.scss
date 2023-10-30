@@ -1,0 +1,47 @@
+:root {
+	// Шрифт по умолчанию
+	--fontFamily: "";
+
+	// font-weight. prefix: --fw-
+	--fw-200: 200;
+	--fw-300: 300;
+	--fw-400: 400;
+	--fw-500: 500;
+	--fw-600: 600;
+	--fw-700: 700;
+	// colors. prefix: --color-
+
+	// line-height. prefix: --lh-
+	
+	// letter-spacing. prefix: --ls-
+
+	// font-size. prefix: --fz-
+}
+
+$breakpoint1400: 1399.98;
+$breakpoint1200: 1199.98;
+$breakpoint992: 991.98;
+$breakpoint768: 767.98;
+$breakpoint576: 575.98;
+$breakpoint480: 479.98;
+$breakpoint375: 374.98;
+$breakpoint360: 359.98;
+
+$defaultFZ: 10;
+
+$maxWidth: 1440;
+$minWidth: 375;
+
+$containerWidth: 1176; // Вписываем ширину контейнера без учёта боковых паддингов
+
+$containerPaddingDefault: 40;
+$containerSidePaddingDefault: math.div($containerPaddingDefault, 2);
+
+$containerPaddingL: 30;
+$containerSidePaddingXS: math.div($containerPaddingL, 2);
+
+$containerPaddingM: 20;
+$containerSidePaddingM: math.div($containerPaddingM, 2);
+
+$containerPaddingS: 10;
+$containerSidePaddingS: math.div($containerPaddingS, 2);
