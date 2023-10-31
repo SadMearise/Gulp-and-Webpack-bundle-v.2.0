@@ -78,7 +78,7 @@ module.exports = {
   cache: cache(),
   devtool: isDev ? 'inline-source-map' : false,
   entry: {
-    index: `${paths.src}/ts/index.ts`,
+    index: `${paths.src}/js/index.js`,
     // app: ["@babel/polyfill", `${paths.src}/js/app.js`],
     // home: `${paths.src}/js/home.js`,
     // style: `${paths.src}/scss/style.scss`,
@@ -103,9 +103,6 @@ module.exports = {
     port: 'auto',
     hot: true,
     host: 'local-ip',
-    devMiddleware: {
-      writeToDisk: true,
-    },
 
     watchFiles: [`${paths.src}/**/*.html`, `${paths.src}/**/*.htm`],
   },
@@ -152,12 +149,6 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.ts$/,
-        use: ['ts-loader'],
-        include: [path.resolve(__dirname, '../src/ts/')],
-        exclude: /node_modules/,
-      },
     ],
   },
   plugins: [
@@ -178,9 +169,9 @@ module.exports = {
   resolve: {
     alias: {
       '@scss': `${paths.src}/scss`,
-      '@ts': `${paths.src}/ts`,
+      '@js': `${paths.src}/js`,
       '@img': `${paths.src}/img`,
     },
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.js'],
   },
 };

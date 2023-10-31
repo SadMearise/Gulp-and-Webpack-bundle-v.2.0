@@ -8,7 +8,7 @@ const replace = require("gulp-replace");
 module.exports = plugins = {
   notify,
   if: ifPlugin,
-  replace: replace,
+  replace,
   plumber,
   rename,
   newer,

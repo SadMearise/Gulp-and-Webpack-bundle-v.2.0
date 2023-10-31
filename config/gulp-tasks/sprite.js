@@ -5,50 +5,50 @@ module.exports = function sprite() {
     .pipe(app.plugins.plumber(
       app.plugins.notify.onError({
         title: "SVG",
-        message: "Error: <%= error.message %>"
-      }))
-    )
+        message: "Error: <%= error.message %>",
+      }),
+    ))
     .pipe(svgSprite({
       mode: {
         symbol: {
-          sprite: '../img/icons/icons.svg',
-        }
+          sprite: "../img/icons/icons.svg",
+        },
       },
       shape: {
         id: {
-          separator: '',
-          generator: 'svg-'
+          separator: "",
+          generator: "svg-",
         },
         transform: [
           {
             svgo: {
               plugins: [
                 {
-                  removeXMLNS: true
+                  removeXMLNS: true,
                 },
                 {
-                  convertPathData: false
+                  convertPathData: false,
                 },
                 {
-                  removeViewBox: false
+                  removeViewBox: false,
                 },
                 {
                   removeAttrs: {
-                    attrs: '(fill|stroke|style)'
-                  }
-                }
-              ]
-            }
-          }
-        ]
+                    attrs: "(fill|stroke|style)",
+                  },
+                },
+              ],
+            },
+          },
+        ],
       },
       svg: {
         rootAttributes: {
-          style: 'display: none;',
-          'aria-hidden': true
+          style: "display: none;",
+          "aria-hidden": true,
         },
-        xmlDeclaration: false
-      }
+        xmlDeclaration: false,
+      },
     }))
     .pipe(app.gulp.dest(app.path.srcFolder));
-}
+};

@@ -1,8 +1,9 @@
 const nodePath = require("path");
+
 const rootFolder = nodePath.basename(nodePath.resolve());
 
-const buildFolder = `./dist`;
-const srcFolder = `./src`;
+const buildFolder = "./dist";
+const srcFolder = "./src";
 
 module.exports = path = {
   build: {
@@ -15,7 +16,7 @@ module.exports = path = {
   },
   src: {
     html: `${srcFolder}/*.html`,
-    ts: `${srcFolder}/ts/*.ts`,
+    js: `${srcFolder}/js/*.js`,
     assets: `${srcFolder}/assets/**/*.*`,
     fonts: `${srcFolder}/fonts/*.*`,
     scss: `${srcFolder}/scss/main.scss`,
@@ -24,7 +25,7 @@ module.exports = path = {
     svgicons: `${srcFolder}/svgicons/*.svg`,
   },
   clean: buildFolder,
-  buildFolder: buildFolder,
-  rootFolder: rootFolder,
-  srcFolder: srcFolder,
+  buildFolder,
+  rootFolder,
+  srcFolder,
 };
